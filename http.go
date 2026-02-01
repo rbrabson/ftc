@@ -1,4 +1,4 @@
-package ftchttp
+package ftc
 
 import (
 	"crypto/tls"
@@ -9,7 +9,7 @@ import (
 
 // Get sends an HTTP GET request to the FTC Server API endpoint and returns the data provided by
 // that endpoint in a byte array.
-func Get(url string) ([]byte, error) {
+func getURL(url string) ([]byte, error) {
 	// Setup the HTTP client for the request
 	client := &http.Client{
 		Transport: &http.Transport{

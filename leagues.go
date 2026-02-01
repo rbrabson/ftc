@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"strings"
-
-	"github.com/rbrabson/ftc/internal/ftchttp"
 )
 
 // Leagues is the data for the FTC leagues
@@ -52,7 +50,7 @@ func GetLeagues(season string, qparms ...map[string]string) ([]*League, error) {
 	}
 	url := sb.String()
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +69,7 @@ func GetLeagues(season string, qparms ...map[string]string) ([]*League, error) {
 func GetLeagueMembers(season, regionCode, leagueCode string) ([]int, error) {
 	url := fmt.Sprintf("%s/%s/leagues/members/%s/%s", server, season, regionCode, leagueCode)
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}

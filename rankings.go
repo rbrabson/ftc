@@ -3,8 +3,6 @@ package ftc
 import (
 	"encoding/json"
 	"fmt"
-
-	"github.com/rbrabson/ftc/internal/ftchttp"
 )
 
 // Rankings is the list of rankings for a given event.
@@ -37,7 +35,7 @@ type Ranking struct {
 func GetRankings(season, eventCode string) ([]*Ranking, error) {
 	url := fmt.Sprintf("%s/%s/rankings/%s", server, season, eventCode)
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}

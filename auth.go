@@ -1,4 +1,4 @@
-package ftchttp
+package ftc
 
 import (
 	"os"
@@ -18,4 +18,10 @@ func init() {
 
 	username = os.Getenv("FTC_USERNAME")
 	authKey = os.Getenv("FTC_AUTHORIZATION_KEY")
+}
+
+// SetAuthCredentials sets the username and authentication key used for authentication on HTTP requests
+func SetAuthCredentials(user, key string) {
+	username = user
+	authKey = key
 }

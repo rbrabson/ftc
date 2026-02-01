@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"strings"
-
-	"github.com/rbrabson/ftc/internal/ftchttp"
 )
 
 // AdvancementsTo is the list of teams that advanced from or to a given tournament
@@ -37,7 +35,7 @@ type Advancement struct {
 func GetAdvancementsFrom(season, eventCode string) ([]*AdvancementsFrom, error) {
 	url := fmt.Sprintf("%s/%s/advancement/%s/source", server, season, eventCode)
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +69,7 @@ func GetAdvancementsTo(season, eventCode string, excludeSkipped ...bool) (*Advan
 	}
 	url := sb.String()
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}

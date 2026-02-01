@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"strings"
-
-	"github.com/rbrabson/ftc/internal/ftchttp"
 )
 
 // Events is information about FTC events.
@@ -62,7 +60,7 @@ func GetEvents(season string, qparms ...map[string]string) ([]*Event, error) {
 	}
 	url := sb.String()
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		fmt.Println(url)
 		return nil, err

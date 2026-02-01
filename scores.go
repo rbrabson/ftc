@@ -3,8 +3,6 @@ package ftc
 import (
 	"encoding/json"
 	"strings"
-
-	"github.com/rbrabson/ftc/internal/ftchttp"
 )
 
 // Scores is the list of match scores at a given event.
@@ -79,7 +77,7 @@ func GetEventScores(season, eventCode string, tournamentLevel MatchType, teamNum
 	}
 	url := sb.String()
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}

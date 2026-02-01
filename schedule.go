@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"strings"
-
-	"github.com/rbrabson/ftc/internal/ftchttp"
 )
 
 // EventSchedules is the list of event schedules
@@ -83,7 +81,7 @@ func GetEventSchedule(season, eventCode string, tournamentLevel MatchType, teamN
 	}
 	url := sb.String()
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}
@@ -102,7 +100,7 @@ func GetEventSchedule(season, eventCode string, tournamentLevel MatchType, teamN
 func GetHybridSchedule(season, eventCode string, tournamentLevel MatchType) ([]*HybridSchedule, error) {
 	url := fmt.Sprintf("%s/%s/schedule/%s?tournamentLevel=%s", server, season, eventCode, string(tournamentLevel))
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}

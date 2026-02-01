@@ -3,8 +3,6 @@ package ftc
 import (
 	"encoding/json"
 	"strings"
-
-	"github.com/rbrabson/ftc/internal/ftchttp"
 )
 
 // Type of FTC match
@@ -61,7 +59,7 @@ func GetMatchResults(season, eventCode string, tournamentLevel MatchType, teamNu
 	}
 	url := sb.String()
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}

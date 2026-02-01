@@ -3,8 +3,6 @@ package ftc
 import (
 	"encoding/json"
 	"fmt"
-
-	"github.com/rbrabson/ftc/internal/ftchttp"
 )
 
 // AllianceSelections is the list of alliance selections.
@@ -45,7 +43,7 @@ type Alliance struct {
 func GetEventAlliances(season, eventCode string) ([]*Alliance, error) {
 	url := fmt.Sprintf("%s/%s/alliances/%s", server, season, eventCode)
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +62,7 @@ func GetEventAlliances(season, eventCode string) ([]*Alliance, error) {
 func GetAllianceSelections(season, eventCode string) ([]*AllianceSelection, error) {
 	url := fmt.Sprintf("%s/%s/alliances/%s/selection", server, season, eventCode)
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}

@@ -16,3 +16,8 @@ func init() {
 
 	server = os.Getenv("FTC_SERVER")
 }
+
+// SetServerURL sets the base server URL to be used when sending HTTP requests.
+func SetServerURL(url string) {
+	server = url
+}

@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"strings"
-
-	"github.com/rbrabson/ftc/internal/ftchttp"
 )
 
 // Teams returns a list of FTC teams. The information is returned in `pages`, so multiple requests
@@ -50,7 +48,7 @@ func GetTeams(season string, teamNumber ...string) ([]*Team, error) {
 	url := sb.String()
 
 	// Get the first page of teams
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +67,7 @@ func GetTeams(season string, teamNumber ...string) ([]*Team, error) {
 	numPages := output.PageTotal
 	for i := 2; i <= numPages; i++ {
 		pageURL := fmt.Sprintf("%s?page=%d", url, i)
-		body, err := ftchttp.Get(pageURL)
+		body, err := getURL(pageURL)
 		if err != nil {
 			return nil, err
 		}

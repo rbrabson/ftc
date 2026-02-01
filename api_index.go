@@ -2,8 +2,6 @@ package ftc
 
 import (
 	"encoding/json"
-
-	"github.com/rbrabson/ftc/internal/ftchttp"
 )
 
 // ApiIndex provives information for the FTC server API
@@ -23,7 +21,7 @@ type ApiIndex struct {
 func GetApiIndex() (*ApiIndex, error) {
 	url := server
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}

@@ -3,8 +3,6 @@ package ftc
 import (
 	"encoding/json"
 	"fmt"
-
-	"github.com/rbrabson/ftc/internal/ftchttp"
 )
 
 // Championships is the information about the season summary
@@ -28,7 +26,7 @@ type Championship struct {
 func GetSeasonSummary(season string) (*Championships, error) {
 	url := fmt.Sprintf("%s/%s", server, season)
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}

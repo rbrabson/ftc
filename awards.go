@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"strings"
-
-	"github.com/rbrabson/ftc/internal/ftchttp"
 )
 
 // Awards is the list of awards for a given season
@@ -42,7 +40,7 @@ type TeamAward struct {
 func GetAwardListing(season string) ([]*Award, error) {
 	url := fmt.Sprintf("%s/%s/awards/list", server, season)
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}
@@ -71,7 +69,7 @@ func GetEventAwards(season, eventCode string, teamNumber ...string) ([]*TeamAwar
 	}
 	url := sb.String()
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}
@@ -99,7 +97,7 @@ func GetTeamAwards(season, teamNumber string, eventCode ...string) ([]*TeamAward
 	}
 	url := sb.String()
 
-	body, err := ftchttp.Get(url)
+	body, err := getURL(url)
 	if err != nil {
 		return nil, err
 	}
