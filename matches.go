@@ -10,8 +10,8 @@ type MatchType string
 
 // The types of FTC matches
 const (
-	QUALIFIER MatchType = "qual"
-	PLAYOFF   MatchType = "playoff"
+	QUALIFIER MatchType = "Qualification"
+	PLAYOFF   MatchType = "Playoff"
 )
 
 // Matches is the list of matches
