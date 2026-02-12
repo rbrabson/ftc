@@ -24,8 +24,8 @@ type MatchScores struct {
 type MatchAlliance struct {
 	Alliance            string `json:"alliance"`
 	Team                int    `json:"team"`
-	Robot1Auto          bool   `json:"robot1Auto"`
-	Robot2Auto          bool   `json:"robot2Auto"`
+	Robot1Auto          any    `json:"robot1Auto"`
+	Robot2Auto          any    `json:"robot2Auto"`
 	Robot1Teleop        string `json:"robot1Teleop"`
 	Robot2Teleop        string `json:"robot2Teleop"`
 	AutoPoints          int    `json:"autoPoints"`
